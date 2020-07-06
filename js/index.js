@@ -117,7 +117,7 @@ function growAndShrink() {
         
         if (distance <= nodes[i].currentSize/2) {       
             nodes[i].isGrowing = true;
-        } else {
+        } else if (!nodes[i].active) {
             nodes[i].isGrowing = false;
             nodes[i].color = 0;
         }
