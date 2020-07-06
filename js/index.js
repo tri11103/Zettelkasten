@@ -35,7 +35,20 @@ function setup() {
         toc.push(createTOCEntry(nodes[i].name, nodes[i]));
     }
     
+    sortTOC();
     drawTOC();    
+}
+
+function sortTOC() {
+    for (var i = 0; i < toc.length; i++) {
+        for (var j = 1; j < toc.length - 1; j++) {
+            if (toc[i].node.difficulty < toc[j].node.difficulty) {
+                var tmp = toc[i];
+                toc[i] = toc[j];
+                toc[j] = tmp;
+            }
+        }
+    }
 }
 
 function draw() {    
