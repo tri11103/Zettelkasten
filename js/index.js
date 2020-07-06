@@ -63,7 +63,16 @@ function drawTOC() {
     var navSideBar = select("#toc");
     for (var i = 0; i < toc.length; i++) {
         if (toc[i].name) {
-            var a = createA("#", toc[i].name);            
+            var a = createA("#", toc[i].name); 
+            
+            if (toc[i].node.difficulty < 2) {
+                a.id("simple");
+            } else if (toc[i].node.difficulty < 4 && toc[i].node.difficulty >= 2) {
+                a.id("moderate");
+            } else {
+                a.id("difficult");
+            } 
+
             a.class("toc-elem side-nav-link");            
             // a.mousePressed(activateTOCEntry);
             navSideBar.child(a);
@@ -105,11 +114,11 @@ function growAndShrink() {
 
         if ((nodes[i].isGrowing || nodes[i].active) && nodes[i].currentSize <= nodes[i].maxSize) {
             if (nodes[i].difficulty < 2) {
-                nodes[i].color = color(0, 255, 0);
+                nodes[i].color = color(80,186,95);
             } else if (nodes[i].difficulty < 4 && nodes[i].difficulty >= 2) {
-                nodes[i].color = color(255, 255, 0);
+                nodes[i].color = color(237,211,23);
             } else {
-                nodes[i].color = color(255, 0, 0);
+                nodes[i].color = color(230,82,64);
             }                 
             nodes[i].currentSize += 1;                                  
         } else if ((!nodes[i].isGrowing || !nodes[i].active) && nodes[i].currentSize >= nodes[i].minSize) {
