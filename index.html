@@ -5,9 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
     <script src="js/index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/css/calcite-web.min.css">
+    <style>
+        canvas {
+            margin-left: 15%;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .side-nav {
+            width: 15%;        
+            margin-top: 5%;    
+            position: absolute;
+        }
+    </style>    
     <title>Zettelkasten</title>
 </head>
 <body>
-    
+    <header class="top-nav fade-in">
+        <div class="grid-container">
+          <div class="column-24">
+            <div class="tablet-hide">
+              <a class="top-nav-title">Educational Resources for Technical Writers</a>
+              <nav class="top-nav-list" role="navigation" aria-labelledby="topnav">
+                <!-- <a class="top-nav-link" href="#">Dashboard</a> -->
+
+              </nav>
+            </div>
+          </div>
+        </div>
+      </header>        
+      <aside class="side-nav" aria-role="complementary">
+        <h4 class="side-nav-title">Table of Contents</h4>
+        <nav id="toc" role="navigation" aria-labelledby="sidenav">
+
+        </nav>
+      </aside>    
+        <script>
+            $(document).ready(() => {
+                $(".toc-elem").click((evt) => {                                
+                    var innerText = evt.currentTarget.firstChild.data;                    
+                    activateTOCEntry(innerText);
+                });                
+            });
+        </script>      
 </body>
 </html>

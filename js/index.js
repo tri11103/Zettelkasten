@@ -19,6 +19,7 @@ let numberOfLines = 0;
 let lines;
 let nodes = [];
 let toc = [];
+let tocElements = [];
 let lineLabels = [];
 let zoom;
 
@@ -27,72 +28,66 @@ function setup() {
     createCanvas(windowWidth - 40, windowHeight);
     background(250);       
     for (var i = 2; i < lines.length; i++) {
-        nodes.push(createNode(random(windowWidth/5 + 30, windowWidth - 64), random(windowHeight - 30), lines[i].split(",")[5], lines[i].split(",")[7], lines[i].split(",")[6], parseInt(lines[i].split(",")[8])))                
+        nodes.push(createNode(random(0, windowWidth - 256), random(windowHeight - 128), lines[i].split(",")[5], lines[i].split(",")[7], lines[i].split(",")[6], parseInt(lines[i].split(",")[8])))                
     }        
 
     for (var i = 0; i < nodes.length; i++) {
         toc.push(createTOCEntry(nodes[i].name, nodes[i]));
     }
+    
+    drawTOC();    
 }
 
 function draw() {    
     clear();    
-    growAndShrink();    
-    hoverTOCEntry();
+    growAndShrink();        
+    // hoverTOCEntry();
 
     for (var i = 0; i < nodes.length; i++) {
-        if (nodes[i].name) {
-            fill(0);
-            stroke(150);    
+        if (nodes[i].name) {            
+            stroke(240);    
             strokeWeight(1);               
-            drawConnections(nodes[i]);            
-            // let c = color(random(255), random(255), random(255));
-            // fill(c);
-            stroke(0);
-            fill(nodes[i].color);
+            drawConnections(nodes[i]);                                    
+            stroke(0);            
+            fill(nodes[i].color);                 
             circle(nodes[i].xPos, nodes[i].yPos, nodes[i].currentSize);                        
             textSize(12); 
-            textAlign(CENTER);           
+            textAlign(CENTER);                            
             text(nodes[i].name, nodes[i].xPos + 12, nodes[i].yPos - 12, 80, 80);                                                                                            
         }
-    } 
-    
-    drawTOC();
+    }     
     // scale(zoom);
 }
 
 function drawTOC() {
-    fill(255);
-    stroke(100);
-    rect(0, 0, windowWidth/5, windowHeight)
-    textSize(12);    
+    var navSideBar = select("#toc");
     for (var i = 0; i < toc.length; i++) {
         if (toc[i].name) {
-            toc[i].xPos = 10        
-            toc[i].yPos = (i * 45);
-            fill(toc[i].node.color);                
-            text(toc[i].name, toc[i].xPos, toc[i].yPos, windowWidth/5 - 10);
+            var a = createA("#", toc[i].name);            
+            a.class("toc-elem side-nav-link");            
+            // a.mousePressed(activateTOCEntry);
+            navSideBar.child(a);
+            tocElements.push(a);
         }
     }
 }
 
-function hoverTOCEntry() {
+function activateTOCEntry(name) {        
     for (var i = 0; i < toc.length; i++) {
-        var distance = dist((windowWidth/5 - 10) / 2, toc[i].yPos, mouseX, mouseY);        
-        
-        if (distance <= 30) {   
-            if (toc[i].node.difficulty < 2) {
-                toc[i].node.color = color(0, 255, 0);
-            } else if (nodes[i].difficulty < 4 && nodes[i].difficulty >= 2) {
-                toc[i].node.color = color(255, 255, 0);
-            } else {
-                toc[i].node.color = color(255, 0, 0);
-            }
-
-            toc[i].node.active = true;
+        if (toc[i].name == name) {
+            toc[i].node.active = !toc[i].node.active;
         } else {
-            // toc[i].node.color = 0;
             toc[i].node.active = false;
+        }
+
+        for (var j = 0; j < tocElements.length; j++) {            
+            if (tocElements[j].elt.firstChild.data.includes(toc[i].name)) {
+                if (toc[i].node.active) {
+                    tocElements[j].addClass("bold");
+                } else {
+                    tocElements[j].removeClass("bold");
+                }
+            }
         }
     }
 }
@@ -101,31 +96,25 @@ function growAndShrink() {
     for (var i = 0; i < nodes.length; i++) {
         var distance = dist(nodes[i].xPos, nodes[i].yPos, mouseX, mouseY);        
         
-        if (distance <= nodes[i].currentSize/2) {
-            if (nodes[i].difficulty < 2) {
-                nodes[i].color = color(0, 255, 0);
-            } else if (nodes[i].difficulty < 4 && nodes[i].difficulty >= 2) {
-                nodes[i].color = color(255, 255, 0);
-            } else {
-                nodes[i].color = color(255, 0, 0);
-            }            
+        if (distance <= nodes[i].currentSize/2) {       
             nodes[i].isGrowing = true;
         } else {
             nodes[i].isGrowing = false;
             nodes[i].color = 0;
         }
 
-
-        if (!nodes[i].active) {
-            if (nodes[i].isGrowing && nodes[i].currentSize <= nodes[i].maxSize) {
-                nodes[i].currentSize += 1;                                  
-            } else if (!nodes[i].isGrowing && nodes[i].currentSize >= nodes[i].minSize) {
-                nodes[i].currentSize -= 3;
-            }                
-        } else {
-            fill(255);
-            stroke(100);            
-        }
+        if ((nodes[i].isGrowing || nodes[i].active) && nodes[i].currentSize <= nodes[i].maxSize) {
+            if (nodes[i].difficulty < 2) {
+                nodes[i].color = color(0, 255, 0);
+            } else if (nodes[i].difficulty < 4 && nodes[i].difficulty >= 2) {
+                nodes[i].color = color(255, 255, 0);
+            } else {
+                nodes[i].color = color(255, 0, 0);
+            }                 
+            nodes[i].currentSize += 1;                                  
+        } else if ((!nodes[i].isGrowing || !nodes[i].active) && nodes[i].currentSize >= nodes[i].minSize) {
+            nodes[i].currentSize -= 3;
+        }                   
     }
 }
 
@@ -155,14 +144,15 @@ function drawConnections(node) {
                 for (var j = 0; j < categories.length; j++) {                                             
                     if (categories[j] && compareToCategories.includes(categories[j])) {
                         if (node.active || node.isGrowing) {
-                            stroke(color(255, 0, 0));
                             strokeWeight(3);
+                            stroke(color(255, 0, 0));                            
                         }                        
                         line(node.xPos, node.yPos, nodes[i].xPos, nodes[i].yPos);                        
                     }
                 }
             }
         }
+        strokeWeight(1);
     }
 }
 
