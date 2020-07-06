@@ -53,8 +53,7 @@ function sortTOC() {
 
 function draw() {    
     clear();    
-    growAndShrink();        
-    // hoverTOCEntry();
+    growAndShrink();            
 
     for (var i = 0; i < nodes.length; i++) {
         if (nodes[i].name) {            
@@ -69,7 +68,6 @@ function draw() {
             text(nodes[i].name, nodes[i].xPos + 12, nodes[i].yPos - 12, 80, 80);                                                                                            
         }
     }     
-    // scale(zoom);
 }
 
 function drawTOC() {
@@ -86,8 +84,7 @@ function drawTOC() {
                 a.id("difficult");
             } 
 
-            a.class("toc-elem side-nav-link");            
-            // a.mousePressed(activateTOCEntry);
+            a.class("toc-elem side-nav-link");                        
             navSideBar.child(a);
             tocElements.push(a);
         }
