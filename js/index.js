@@ -117,7 +117,7 @@ function growAndShrink() {
         
         if (distance <= nodes[i].currentSize/2) {       
             nodes[i].isGrowing = true;
-        } else if (!nodes[i].active) {
+        } else {
             nodes[i].isGrowing = false;
             nodes[i].color = 0;
         }
@@ -180,6 +180,7 @@ function doubleClicked() {
         var distance = dist(nodes[i].xPos, nodes[i].yPos, mouseX, mouseY);        
 
         if (distance <= nodes[i].currentSize*2) {            
+            nodes[i].active = true;
             window.open(nodes[i].link, '_blank');
         }
     }
