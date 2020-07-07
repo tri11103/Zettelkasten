@@ -131,7 +131,7 @@ function growAndShrink() {
                 nodes[i].color = color(230,82,64);
             }                 
             nodes[i].currentSize += 1;                                  
-        } else if ((!nodes[i].isGrowing || !nodes[i].active) && nodes[i].currentSize >= nodes[i].minSize) {
+        } else if ((!nodes[i].isGrowing && !nodes[i].active) && nodes[i].currentSize >= nodes[i].minSize) {
             nodes[i].currentSize -= 3;
         }                   
     }
