@@ -91,7 +91,12 @@ function drawTOC() {
     }
 }
 
-function activateTOCEntry(name) {        
+function activateTOCEntry(name) { 
+    for (var i = 0; i < toc.length; i++) {
+        toc[i].node.active = false;
+        toc[i].node.isGrowing = false;
+    }
+    
     for (var i = 0; i < toc.length; i++) {
         if (toc[i].name == name) {
             toc[i].node.active = !toc[i].node.active;
