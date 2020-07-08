@@ -1,0 +1,47 @@
+Name:____________________________________________________________
+
+= Developing your Learning Plan
+
+Developing a learning plan is a crucial step in learning new subject matter. Trying to learn something new without a learning plan is like hiking in the woods without a map-- you're likely to get lost!
+
+There are a few steps to developing a good learning plan:
+
+1. Understand your over-all goal.
+2. Develop smaller, iterative SMART goals.
+
+== Understanding your over-all goal
+
+Our team's goal is to have our technical writers become SMEs for the products they write for. In the form below, write what you know about your products as well as the audience you're writing documentation for.
+
+|===
+|What is the purpose of your product? (i.e. what problems does it solve?) |
+|Which parts of the ArcGIS platform does your product implement? |
+|What software requirements exist for your product? |
+|Which people are most likely to read the documentation for your product? (e.g. a hobbyist, a city planner, etc.) |
+|What background knowledge will help your readers as they read your documentation? (e.g. Python, ArcGIS Online, etc.) | 
+|===
+
+== Developing SMART goals
+
+The SMART method is a useful way to create and acheive goals. Remember that a SMART goal is:
+
+- _S_ pecific
+- _M_ easurable
+- _A_ ttainable
+- _R_ ealistic
+- _T_ ime sensitive 
+
+To reach our over-all goal, we'll need to develop a series of SMART goals (which we can think of as checkpoints) to iteratively inch closer to our goal. A good example of a checkpoint might be "I will attend an Esri Learning course on the fundamentals of ArcGIS Pro to make a map of my hometown."
+
+As you think of your checkpoints, refer back to this diagram showing all of the learning resources the technical writing team has sourced: http://tri11103.github.io/Zettelkasten
+
+_Note:_ You can have as many checkpoints as you want! Education is a journey, not necessarily a destination :) 
+
+|===
+| 1.
+| 2. 
+| 3.
+| 4.
+| 5.
+| 6.
+|===
