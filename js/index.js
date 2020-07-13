@@ -1,7 +1,7 @@
 //@todo(tdamron): load data from a file in production
 
 let csv = `
-ID,Start time,Completion time,Email,Name,What is the name of this resource?,Link to resource,What type of resource is this?,"How would you rank this resources difficulty? (Note: not sure how difficult this resource is? Take a guess! Your answer will be validated later.)
+ID,Start time,Completion time,Email,Name,Name of the resource,Link to resource,What type of resource is this?,"How would you rank this resources difficulty? (Note: not sure how difficult this resource is? Take a guess! Your answer will be validated later.)
 
 1 - Extremely simple
 5 - Very difficult"
@@ -14,7 +14,8 @@ ID,Start time,Completion time,Email,Name,What is the name of this resource?,Link
 7,7/2/20 15:59:03,7/2/20 15:59:44,tri11103@esri.com,Tristan Damron,How to make area cartogram maps in ArcGIS (ArcMap),https://www.gislounge.com/how-to-make-area-cartogram-maps-in-arcgis/,ArcMap;Cartography;,2
 8,7/2/20 16:00:43,7/2/20 16:03:19,tri11103@esri.com,Tristan Damron,The Basics of GIS - ArcGIS Pro,https://www.youtube.com/watch?v=BFYG9oEV1EE,ArcGIS Pro;,1
 9,7/2/20 16:03:51,7/2/20 16:07:31,tri11103@esri.com,Tristan Damron,Understanding Map Scale,https://www.gislounge.com/understanding-scale/,Cartography;,1
-`;
+10,7/6/20 9:45:54,7/6/20 9:46:48,tri11103@esri.com,Tristan Damron,Esri's supplementary resources for cartography,https://www.reddit.com/r/gis/comments/hm6zms/esris_list_of_supplementary_resources_to_their/,Cartography;Graphic Design;,2
+11,7/8/20 11:22:33,7/8/20 11:25:33,jos97107@esri.com,Josue Aguirre,(Esri Academy) ArcGIS Indoors: Loading Floor Plan Data,www.esri.com/training/catalog/5ecd6ae0dbabbe0afc9feb81/,Indoors;,2`;
 let numberOfLines = 0;
 let lines;
 let nodes = [];
