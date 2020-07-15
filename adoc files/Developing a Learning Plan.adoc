@@ -7,7 +7,8 @@ Developing a learning plan is a crucial step in learning new subject matter. Try
 There are a few steps to developing a good learning plan:
 
 1. Understand your over-all goal.
-2. Develop smaller, iterative SMART goals.
+2. Identifying your own skillset.
+3. Develop smaller, iterative SMART goals.
 
 == Understanding your over-all goal
 
@@ -19,6 +20,26 @@ Our team's goal is to have our technical writers become SMEs for the products th
 |What software requirements exist for your product? |
 |Which people are most likely to read the documentation for your product? (e.g. a hobbyist, a city planner, etc.) |
 |What background knowledge will help your readers as they read your documentation? (e.g. Python, ArcGIS Online, etc.) | 
+|===
+
+== Identifying your own skillset
+
+You come to Esri with a unique set of skills and experiences. Combined, these factors will influence how your learning path is developed. 
+
+|===
+| What skills do you bring to your work? | 
+|===
+
+Learning is an extremely personal process. It means working towards your goals, (both professional and personal). Broadly speaking, it is important to have an idea of what you want to acheive. What do you want to learn? What do you hope to get out of this experience? Why?
+
+|===
+| 
+|===
+
+It is likely that you've already taken steps to acheive your goals! Reflecting on what you've acheived already is crucial in understanding your next steps.
+
+|===
+| What have you done already to help acheive your goals? |
 |===
 
 == Developing SMART goals
@@ -33,7 +54,7 @@ The SMART method is a useful way to create and acheive goals. Remember that a SM
 
 To reach our over-all goal, we'll need to develop a series of SMART goals (which we can think of as checkpoints) to iteratively inch closer to our goal. A good example of a checkpoint might be "I will attend an Esri Learning course on the fundamentals of ArcGIS Pro to make a map of my hometown."
 
-As you think of your checkpoints, refer back to this diagram showing all of the learning resources the technical writing team has sourced: http://tri11103.github.io/Zettelkasten
+As you think of your checkpoints, refer back to this diagram showing all of the learning resources the technical writing team has sourced: http://tri11103.github.io/Zettelkasten If you would like, you can also view these resources in an https://esriis-my.sharepoint.com/:x:/g/personal/tri11103_esri_com/EWGkQQM0KQhBmUZHlo-RhQ8BPPpGPecy7BxieZcJ05ORTQ?e=9abyhj[Excel Spreadsheet]
 
 _Note:_ You can have as many checkpoints as you want! Education is a journey, not necessarily a destination :) 
 
