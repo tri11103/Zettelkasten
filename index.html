@@ -1,69 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
-    <script src="js/index.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <link rel="stylesheet" href="https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/css/calcite-web.min.css">
-    <style>
-        canvas {
-            margin-left: 15%;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
+  <script src="js/index.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <link rel="stylesheet"
+    href="https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/css/calcite-web.min.css">
+  <style>
+    canvas {
+      margin-left: 15%;
+    }
 
-        .bold {
-            font-weight: bold;
-        }
+    .bold {
+      font-weight: bold;
+    }
 
-        .side-nav {
-            width: 15%;        
-            margin-top: 5%;    
-            position: absolute;
-        }
+    .side-nav {
+      width: 15%;
+      margin-top: 5%;
+      position: absolute;
+    }
 
-        #simple:hover {
-          background-color: #50ba5f;
-        }
+    #simple:hover {
+      background-color: #50ba5f;
+    }
 
-        #moderate:hover {
-          background-color: #edd317;
-        }
+    #moderate:hover {
+      background-color: #edd317;
+    }
 
-        #difficult:hover {
-          background-color: #e65240;
-        }        
-    </style>    
-    <title>Zettelkasten</title>
+    #difficult:hover {
+      background-color: #e65240;
+    }
+
+    #cart {
+      position: absolute;
+      margin-top: 20px;
+      margin-left: 50px;   
+      width: 25px;
+      height: 25px;         
+      border: 0;
+      text-align: center;
+      color: black;      
+    }
+
+    .cartHasItems {      
+      background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+      background-size: 400% 100%;    
+      font-weight: bold;
+      animation: rainbow 6s ease-in-out infinite;
+    }
+
+    .cartIsEmpty {      
+      border-color: #000;
+    }
+
+    @keyframes rainbow {
+      0%,100% {
+        background-position: 0 0;
+      }
+
+      50% {
+          background-position: 100% 0;
+      }
+    }
+
+  </style>
+  <title>Zettelkasten</title>
 </head>
+
 <body>
-    <header class="top-nav fade-in">
-        <div class="grid-container">
-          <div class="column-24">
-            <div class="tablet-hide">
-              <a class="top-nav-title">Educational Resources for Technical Writers</a>
-              <nav class="top-nav-list" role="navigation" aria-labelledby="topnav">
-                <!-- <a class="top-nav-link" href="#">Dashboard</a> -->
-                <a class="top-nav-link" href="/Zettelkasten/">Reset graph</a>
-
-              </nav>
-            </div>
-          </div>
+  <header class="top-nav fade-in">
+    <div class="grid-container">
+      <div class="column-24">
+        <div class="tablet-hide">
+          <a class="top-nav-title">Educational Resources for Technical Writers</a>
+          <nav class="top-nav-list" role="navigation" aria-labelledby="topnav">
+            <!-- <a class="top-nav-link" href="#">Dashboard</a> -->
+            <a class="top-nav-link" href="/Zettelkasten/">Reset graph</a>
+            <a id="cart" class="cartIsEmpty tooltip modifier-class" aria-label="Click here to checkout your learning plan!"></a>
+            </nav>
         </div>
-      </header>        
-      <aside class="side-nav" aria-role="complementary">
-        <h4 class="side-nav-title">Table of Contents</h4>
-        <nav id="toc" role="navigation" aria-labelledby="sidenav">
+      </div>
+    </div>
+  </header>
+  <aside class="side-nav" aria-role="complementary">
+    <h4 class="side-nav-title">Table of Contents</h4>
+    <nav id="toc" role="navigation" aria-labelledby="sidenav">
 
-        </nav>
-      </aside>    
-        <script>
-            $(document).ready(() => {
-                $(".toc-elem").click((evt) => {                                
-                    var innerText = evt.currentTarget.firstChild.data;                    
-                    activateTOCEntry(innerText);
-                });                
-            });
-        </script>      
+    </nav>
+  </aside>
+  <script>
+    $(document).ready(() => {
+      $(".toc-elem").click((evt) => {
+        var innerText = evt.currentTarget.firstChild.data;
+        activateTOCEntry(innerText);
+      });
+    });
+  </script>
 </body>
+
 </html>

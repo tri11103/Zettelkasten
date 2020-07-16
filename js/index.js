@@ -22,6 +22,8 @@ let nodes = [];
 let toc = [];
 let tocElements = [];
 let lineLabels = [];
+let shoppingCart = [];
+let cartIcon;
 let zoom;
 
 function setup() {
@@ -36,6 +38,8 @@ function setup() {
         toc.push(createTOCEntry(nodes[i].name, nodes[i]));
     }
     
+    cart = select("#cart");
+
     sortTOC();
     drawTOC();    
 }
@@ -52,7 +56,14 @@ function sortTOC() {
     }
 }
 
-function draw() {    
+function draw() {       
+    if (shoppingCart.length > 0) {
+        cart.removeClass("cartIsEmpty");
+        cart.addClass("cartHasItems");
+    }
+
+    cart.html(shoppingCart.length);
+
     clear();    
     growAndShrink();            
 
@@ -187,7 +198,10 @@ function doubleClicked() {
 
         if (distance <= nodes[i].currentSize*2) {            
             nodes[i].active = true;
-            window.open(nodes[i].link, '_blank');
+            if (!shoppingCart.includes(nodes[i])) {
+                shoppingCart.push(nodes[i]);
+            }            
+            // window.open(nodes[i].link, '_blank');
         }
     }
 }
