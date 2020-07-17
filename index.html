@@ -39,35 +39,36 @@
     #cart {
       position: absolute;
       margin-top: 20px;
-      margin-left: 50px;   
+      margin-left: 50px;
       width: 25px;
-      height: 25px;         
+      height: 25px;
       border: 0;
       text-align: center;
-      color: black;      
+      color: black;
     }
 
-    .cartHasItems {      
+    .cartHasItems {
       background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
-      background-size: 400% 100%;    
+      background-size: 400% 100%;
       font-weight: bold;
       animation: rainbow 6s ease-in-out infinite;
     }
 
-    .cartIsEmpty {      
+    .cartIsEmpty {
       border-color: #000;
     }
 
     @keyframes rainbow {
-      0%,100% {
+
+      0%,
+      100% {
         background-position: 0 0;
       }
 
       50% {
-          background-position: 100% 0;
+        background-position: 100% 0;
       }
     }
-
   </style>
   <title>Zettelkasten</title>
 </head>
@@ -81,8 +82,9 @@
           <nav class="top-nav-list" role="navigation" aria-labelledby="topnav">
             <!-- <a class="top-nav-link" href="#">Dashboard</a> -->
             <a class="top-nav-link" href="/Zettelkasten/">Reset graph</a>
-            <a id="cart" class="cartIsEmpty tooltip modifier-class" aria-label="Click here to checkout your learning plan!"></a>
-            </nav>
+            <a id="cart" class="cartIsEmpty tooltip modifier-class js-modal-toggle" href="#" data-modal="foo"
+              aria-label="Click here to checkout your learning plan!"></a>
+          </nav>
         </div>
       </div>
     </div>
@@ -90,14 +92,29 @@
   <aside class="side-nav" aria-role="complementary">
     <h4 class="side-nav-title">Table of Contents</h4>
     <nav id="toc" role="navigation" aria-labelledby="sidenav">
-
     </nav>
   </aside>
+
+  <div class="js-modal modal-overlay modifier-class" data-modal="foo">
+    <div id="cartModal" class="modal-content column-12" role="dialog" aria-labelledby="modal" role="dialog">  
+      <!-- Contents of the shopping cart goes here! -->
+    </div>
+  </div>
+  <script
+    src="https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/js/calcite-web.min.js"></script>
+  <script>
+    var x = calcite.init();
+    console.log(x);
+  </script>
   <script>
     $(document).ready(() => {
       $(".toc-elem").click((evt) => {
         var innerText = evt.currentTarget.firstChild.data;
         activateTOCEntry(innerText);
+      });
+
+      $("#cartModal").click((evt) => {
+        showCart();
       });
     });
   </script>

@@ -24,6 +24,7 @@ let tocElements = [];
 let lineLabels = [];
 let shoppingCart = [];
 let cartIcon;
+let cartModal;
 let zoom;
 
 function setup() {
@@ -39,6 +40,7 @@ function setup() {
     }
     
     cart = select("#cart");
+    cartModal = select("#cartModal");
 
     sortTOC();
     drawTOC();    
@@ -54,6 +56,23 @@ function sortTOC() {
             }
         }
     }
+}
+
+function showCart() {
+    var ret = `<h3 class='trailer-half'>Your learning plan!</h3>`;
+
+    for (var i = 0; i < shoppingCart.length; i++) {
+        ret += "<p><a href=\"" + shoppingCart[i].link + "\">" + shoppingCart[i].name + "</a></p>\n";
+    }   
+
+    ret += `
+      <div class="text-right">
+        <button class="btn btn-clear js-modal-toggle">Close</button>
+      </div>        
+    `;
+
+    console.log(ret); 
+    cartModal.html(ret);
 }
 
 function draw() {       
