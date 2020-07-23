@@ -15,7 +15,10 @@ ID,Start time,Completion time,Email,Name,Name of the resource,Link to resource,W
 8,7/2/20 16:00:43,7/2/20 16:03:19,tri11103@esri.com,Tristan Damron,The Basics of GIS - ArcGIS Pro,https://www.youtube.com/watch?v=BFYG9oEV1EE,ArcGIS Pro;,1
 9,7/2/20 16:03:51,7/2/20 16:07:31,tri11103@esri.com,Tristan Damron,Understanding Map Scale,https://www.gislounge.com/understanding-scale/,Cartography;,1
 10,7/6/20 9:45:54,7/6/20 9:46:48,tri11103@esri.com,Tristan Damron,Esri's supplementary resources for cartography,https://www.reddit.com/r/gis/comments/hm6zms/esris_list_of_supplementary_resources_to_their/,Cartography;Graphic Design;,2
-11,7/8/20 11:22:33,7/8/20 11:25:33,jos97107@esri.com,Josue Aguirre,(Esri Academy) ArcGIS Indoors: Loading Floor Plan Data,www.esri.com/training/catalog/5ecd6ae0dbabbe0afc9feb81/,Indoors;,2`;
+11,7/8/20 11:22:33,7/8/20 11:25:33,jos97107@esri.com,Josue Aguirre,(Esri Academy) ArcGIS Indoors: Loading Floor Plan Data,www.esri.com/training/catalog/5ecd6ae0dbabbe0afc9feb81/,Indoors;,2
+12,7/22/20 17:08:38,7/22/20 17:09:08,tri11103@esri.com,Tristan Damron,The National Map,https://viewer.nationalmap.gov/basic/,AGOL;Cartography;,1
+13,7/23/20 11:49:51,7/23/20 11:50:26,tri11103@esri.com,Tristan Damron,Free GIS Books - GIS Lounge,https://www.gislounge.com/free-gis-books/,Python;Data Science;Cartography;,2
+`;
 let numberOfLines = 0;
 let lines;
 let nodes = [];
