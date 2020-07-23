@@ -96,7 +96,7 @@
   </aside>
 
   <div class="js-modal modal-overlay modifier-class" data-modal="foo">
-    <div id="cartModal" class="modal-content column-12" role="dialog" aria-labelledby="modal" role="dialog">  
+    <div id="cartModal" class="modal-content column-12" aria-labelledby="modal" role="dialog">  
       <!-- Contents of the shopping cart goes here! -->
     </div>
   </div>
@@ -113,7 +113,7 @@
         activateTOCEntry(innerText);
       });
 
-      $("#cartModal").click((evt) => {
+      $("#cart").click((evt) => {
         showCart();
       });
     });

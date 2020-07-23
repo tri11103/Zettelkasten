@@ -58,20 +58,32 @@ function sortTOC() {
     }
 }
 
+function sortShoppingCart() {
+    for (var i = 0; i < shoppingCart.length; i++) {
+        for (var j = 1; j < shoppingCart.length - 1; j++) {
+            if (shoppingCart[i].difficulty < shoppingCart[j].difficulty) {
+                var tmp = shoppingCart[i];
+                shoppingCart[i] = shoppingCart[j];
+                shoppingCart[j] = tmp;
+            }
+        }
+    }
+}
+
+
 function showCart() {
+    sortShoppingCart();
+
     var ret = `<h3 class='trailer-half'>Your learning plan!</h3>`;
 
     for (var i = 0; i < shoppingCart.length; i++) {
-        ret += "<p><a href=\"" + shoppingCart[i].link + "\">" + shoppingCart[i].name + "</a></p>\n";
+        ret += "<p><a href=\"" + shoppingCart[i].link + "\" target=\"_blank\">" + shoppingCart[i].name + "</a></p>\n";
     }   
 
     ret += `
-      <div class="text-right">
-        <button class="btn btn-clear js-modal-toggle">Close</button>
-      </div>        
+      <p>Press ESC to close your cart.</p>        
     `;
-
-    console.log(ret); 
+    
     cartModal.html(ret);
 }
 
