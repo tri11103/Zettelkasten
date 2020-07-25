@@ -1,24 +1,6 @@
 //@todo(tdamron): load data from a file in production
 
-let csv = `
-ID,Start time,Completion time,Email,Name,Name of the resource,Link to resource,What type of resource is this?,"How would you rank this resources difficulty? (Note: not sure how difficult this resource is? Take a guess! Your answer will be validated later.)
-
-1 - Extremely simple
-5 - Very difficult"
-1,7/2/20 11:00:22,7/2/20 11:01:24,tri11103@esri.com,Tristan Damron,Esri - Instructional Resources for Schools,https://www.esri.com/en-us/industries/education/schools/instructional-resources,AGOL;Cartography;,3
-2,7/2/20 11:01:25,7/2/20 11:03:11,tri11103@esri.com,Tristan Damron,GIS Fundamentals - Complete Learning Plan,https://www.esri.com/training/catalog/5b73407f8659c25ea7014330/gis-fundamentals/,ArcGIS Pro;AGOL;Data Science;Cartography;,4
-3,7/2/20 11:03:12,7/2/20 11:03:58,tri11103@esri.com,Tristan Damron,ArcGIS Pro Fundamentals - Complete Learning Plan,https://www.esri.com/training/catalog/5b733d0c8659c25ea7013df9/arcgis-pro-fundamentals/,ArcGIS Pro;Data Science;Cartography;,3
-4,7/2/20 11:03:59,7/2/20 11:05:04,tri11103@esri.com,Tristan Damron,Getting Started with ArcGIS Pro - Esri Web Course,https://www.esri.com/training/catalog/57630435851d31e02a43f007/getting-started-with-arcgis-pro/,ArcGIS Pro;ArcMap;Data Science;,3
-5,7/2/20 11:05:05,7/2/20 11:05:52,tri11103@esri.com,Tristan Damron,Esri Library,https://compass.esri.com/resources/esripress/Pages/Home.aspx#InplviewHash4809f385-1dc4-44e1-8df5-83f9d2f9bbe1=,ArcGIS Pro;ArcGIS Enterprise;AGOL;ArcMap;Indoors;Space Planner;Maritime;Aviation;Bathymetry;Topography;Defense Mapping;INSPIRE;Python;Data Science;Cartography;Graphic Design;Writing;,2
-6,7/2/20 11:06:25,7/2/20 11:07:02,tri11103@esri.com,Tristan Damron,ArcGIS Indoors: Loading Floor Plan Data - Esri Web Course,https://www.esri.com/training/catalog/5ecd6ae0dbabbe0afc9feb81/arcgis-indoors%3A-loading-floor-plan-data/,ArcGIS Pro;ArcGIS Enterprise;AGOL;Indoors;Python;,4
-7,7/2/20 15:59:03,7/2/20 15:59:44,tri11103@esri.com,Tristan Damron,How to make area cartogram maps in ArcGIS (ArcMap),https://www.gislounge.com/how-to-make-area-cartogram-maps-in-arcgis/,ArcMap;Cartography;,2
-8,7/2/20 16:00:43,7/2/20 16:03:19,tri11103@esri.com,Tristan Damron,The Basics of GIS - ArcGIS Pro,https://www.youtube.com/watch?v=BFYG9oEV1EE,ArcGIS Pro;,1
-9,7/2/20 16:03:51,7/2/20 16:07:31,tri11103@esri.com,Tristan Damron,Understanding Map Scale,https://www.gislounge.com/understanding-scale/,Cartography;,1
-10,7/6/20 9:45:54,7/6/20 9:46:48,tri11103@esri.com,Tristan Damron,Esri's supplementary resources for cartography,https://www.reddit.com/r/gis/comments/hm6zms/esris_list_of_supplementary_resources_to_their/,Cartography;Graphic Design;,2
-11,7/8/20 11:22:33,7/8/20 11:25:33,jos97107@esri.com,Josue Aguirre,(Esri Academy) ArcGIS Indoors: Loading Floor Plan Data,www.esri.com/training/catalog/5ecd6ae0dbabbe0afc9feb81/,Indoors;,2
-12,7/22/20 17:08:38,7/22/20 17:09:08,tri11103@esri.com,Tristan Damron,The National Map,https://viewer.nationalmap.gov/basic/,AGOL;Cartography;,1
-13,7/23/20 11:49:51,7/23/20 11:50:26,tri11103@esri.com,Tristan Damron,Free GIS Books - GIS Lounge,https://www.gislounge.com/free-gis-books/,Python;Data Science;Cartography;,2
-`;
+let csv;
 let numberOfLines = 0;
 let lines;
 let nodes = [];
@@ -30,12 +12,16 @@ let cartIcon;
 let cartModal;
 let zoom;
 
-function setup() {
-    lines = csv.split('\n');    
+function preload() {
+    csv = loadTable("assets/data.csv", "csv", "header");         
+}
+
+function setup() {    
     createCanvas(windowWidth - 40, windowHeight);
-    background(250);       
-    for (var i = 2; i < lines.length; i++) {
-        nodes.push(createNode(random(0, windowWidth - 256), random(windowHeight - 128), lines[i].split(",")[5], lines[i].split(",")[7], lines[i].split(",")[6], parseInt(lines[i].split(",")[8])))                
+    background(250);               
+
+    for (var i = 2; i < csv.getRowCount(); i++) {
+        nodes.push(createNode(random(0, windowWidth - 256), random(windowHeight - 128), csv.getString(i, 5), csv.getString(i, 7), csv.getString(i, 6), parseInt(csv.getString(i, 8))));        
     }        
 
     for (var i = 0; i < nodes.length; i++) {
