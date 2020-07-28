@@ -73,7 +73,7 @@ function showCart() {
       <button type="button" onclick="printJS('cartModal', 'html')">
     	Print your learning plan
       </button>
-   	 
+      </br>	 
       <small>Press ESC to close your cart.</small>
     `;
     cartModal.html(ret);
