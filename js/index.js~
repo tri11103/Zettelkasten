@@ -66,10 +66,12 @@ function showCart() {
     var ret = `<h3 class='trailer-half'>Your learning plan!</h3>`;
 
     for (var i = 0; i < shoppingCart.length; i++) {
-        ret += "<p><a href=\"" + shoppingCart[i].link + "\" target=\"_blank\">" + shoppingCart[i].name + "</a></p>\n";
+        ret += "<p><a href=\"" + shoppingCart[i].link + "\" target=\"_blank\">" + shoppingCart[i].name + "</a> | URL: " + shoppingCart[i].link + + "</p>\n";
     }   
 
     ret += `
+      </br> 
+      </br> 
       <button type="button" onclick="printJS('cartModal', 'html')">
     	Print your learning plan
       </button>

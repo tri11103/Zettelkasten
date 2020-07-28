@@ -57,3 +57,10 @@
         background-position: 100% 0;
       }
     }
+    
+    @media print {
+      a::after{
+        content: " (" attr(href) ") ";
+      }
+    }
+
